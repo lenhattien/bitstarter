@@ -2,15 +2,15 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-fs = require('fs')
-fs.readFile('index.html', 'utf8', function (err,data) {
+app.get('/', function(request, response) {
+  fs = require('fs')
+  fs.readFile('index.html', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
   console.log(data);
-});
+  });
 
-app.get('/', function(request, response) {
   response.send(data);
 });
 
